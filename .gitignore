@@ -16,5 +16,6 @@
 
 .vscode/
 
+.dccache
 Makefile
 coverage.out

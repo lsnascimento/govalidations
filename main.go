@@ -1,8 +1,8 @@
 package validations
 
 import (
-	"github.com/lnascimento1988/govalidations/notifications"
-	"github.com/lnascimento1988/govalidations/validators"
+	"github.com/lsnascimento/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/validators"
 )
 
 type Validation struct {
