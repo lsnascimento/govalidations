@@ -1,6 +1,6 @@
 package validators
 
-import "github.com/lnascimento1988/govalidations/notifications"
+import "github.com/lsnascimento/govalidations/notifications"
 
 type Validator struct {
 	Int

@@ -3,7 +3,7 @@ package validators
 import (
 	"testing"
 
-	"github.com/lnascimento1988/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/notifications"
 )
 
 type IntDomain struct {
