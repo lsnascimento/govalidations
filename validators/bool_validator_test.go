@@ -3,11 +3,12 @@ package validators
 import (
 	"testing"
 
-	"github.com/lnascimento1988/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/notifications"
 )
 
 type BoolDomain struct {
 	inputData    bool
+	inputPointer *bool
 	property     string
 	message      string
 	expectedData bool
@@ -16,6 +17,33 @@ type BoolDomain struct {
 
 func TestBoolValidator(t *testing.T) {
 	useCases := map[string]BoolDomain{
+		"success: IsRequired pass true": {
+			inputPointer: getBoolPointer(true),
+			property:     "IsRequired",
+			message:      "",
+			expectedData: false,
+			execute: func(instance Bool, domain BoolDomain) {
+				instance.IsRequired(domain.inputPointer, domain.property, domain.message)
+			},
+		},
+		"success: IsRequired pass false": {
+			inputPointer: getBoolPointer(false),
+			property:     "IsRequired",
+			message:      "",
+			expectedData: false,
+			execute: func(instance Bool, domain BoolDomain) {
+				instance.IsRequired(domain.inputPointer, domain.property, domain.message)
+			},
+		},
+		"error: IsRequired pass nil": {
+			inputPointer: nil,
+			property:     "IsRequired",
+			message:      "",
+			expectedData: true,
+			execute: func(instance Bool, domain BoolDomain) {
+				instance.IsRequired(domain.inputPointer, domain.property, domain.message)
+			},
+		},
 		"success: IsTrue": {
 			inputData:    true,
 			property:     "IsTrue",
@@ -68,4 +96,8 @@ func TestBoolValidator(t *testing.T) {
 			}
 		})
 	}
+}
+
+func getBoolPointer(value bool) *bool {
+	return &value
 }

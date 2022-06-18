@@ -1,6 +1,6 @@
 package validators
 
-import "github.com/lnascimento1988/govalidations/notifications"
+import "github.com/lsnascimento/govalidations/notifications"
 
 type Bool struct {
 	Notifier *notifications.Notifier
@@ -9,6 +9,12 @@ type Bool struct {
 func NewBool(notifier *notifications.Notifier) Bool {
 	return Bool{
 		Notifier: notifier,
+	}
+}
+
+func (validation *Bool) IsRequired(value *bool, property, message string) {
+	if value == nil {
+		validation.Notifier.AddNotification(property, message)
 	}
 }
 

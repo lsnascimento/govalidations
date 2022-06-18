@@ -1,7 +1,7 @@
 package validators
 
 import (
-	"github.com/lnascimento1988/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/notifications"
 )
 
 type Int struct {
@@ -11,6 +11,12 @@ type Int struct {
 func NewInt(notifier *notifications.Notifier) Int {
 	return Int{
 		Notifier: notifier,
+	}
+}
+
+func (validation *Int) IsRequired(value *int, property, message string) {
+	if value == nil {
+		validation.Notifier.AddNotification(property, message)
 	}
 }
 

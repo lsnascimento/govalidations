@@ -3,11 +3,12 @@ package validators
 import (
 	"testing"
 
-	"github.com/lnascimento1988/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/notifications"
 )
 
 type IntDomain struct {
 	inputData    int
+	inputPointer *int
 	comparer     int
 	property     string
 	message      string
@@ -17,6 +18,33 @@ type IntDomain struct {
 
 func TestIntValidator(t *testing.T) {
 	useCases := map[string]IntDomain{
+		"success: IsRequired pass 1": {
+			inputPointer: getIntPointer(1),
+			property:     "IsRequired",
+			message:      "",
+			expectedData: false,
+			execute: func(instance Int, domain IntDomain) {
+				instance.IsRequired(domain.inputPointer, domain.property, domain.message)
+			},
+		},
+		"success: IsRequired pass 0": {
+			inputPointer: getIntPointer(0),
+			property:     "IsRequired",
+			message:      "",
+			expectedData: false,
+			execute: func(instance Int, domain IntDomain) {
+				instance.IsRequired(domain.inputPointer, domain.property, domain.message)
+			},
+		},
+		"error: IsRequired pass nil": {
+			inputPointer: nil,
+			property:     "IsRequired",
+			message:      "",
+			expectedData: true,
+			execute: func(instance Int, domain IntDomain) {
+				instance.IsRequired(domain.inputPointer, domain.property, domain.message)
+			},
+		},
 		"success: IsGreaterThan": {
 			inputData:    4,
 			comparer:     3,
@@ -173,4 +201,8 @@ func TestIntValidator(t *testing.T) {
 			}
 		})
 	}
+}
+
+func getIntPointer(value int) *int {
+	return &value
 }

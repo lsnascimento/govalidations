@@ -1,7 +1,7 @@
 package validators
 
 import (
-	"github.com/lnascimento1988/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/notifications"
 )
 
 type Date struct {
