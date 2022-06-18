@@ -1,4 +1,4 @@
-package validations
+package govalidations
 
 import (
 	"github.com/lsnascimento/govalidations/notifications"

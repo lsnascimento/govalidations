@@ -14,6 +14,12 @@ func NewInt(notifier *notifications.Notifier) Int {
 	}
 }
 
+func (validation *Int) IsRequired(value *int, property, message string) {
+	if value == nil {
+		validation.Notifier.AddNotification(property, message)
+	}
+}
+
 func (validation *Int) IsGreaterThan(value, compare int, property, message string) {
 	if value <= compare {
 		validation.Notifier.AddNotification(property, message)
