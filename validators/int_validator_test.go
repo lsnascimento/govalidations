@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/lsnascimento/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/validators/core"
 )
 
 type IntDomain struct {
@@ -190,7 +191,7 @@ func TestIntValidator(t *testing.T) {
 	for name, useCase := range useCases {
 		t.Run(name, func(t *testing.T) {
 			notifier := notifications.New()
-			instance := NewInt(notifier)
+			instance := NewInt(core.NewInt(), notifier)
 
 			useCase.execute(instance, useCase)
 

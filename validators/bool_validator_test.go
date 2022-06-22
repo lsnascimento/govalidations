@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/lsnascimento/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/validators/core"
 )
 
 type BoolDomain struct {
@@ -85,7 +86,7 @@ func TestBoolValidator(t *testing.T) {
 	for name, useCase := range useCases {
 		t.Run(name, func(t *testing.T) {
 			notifier := notifications.New()
-			instance := NewBool(notifier)
+			instance := NewBool(core.NewBool(), notifier)
 
 			useCase.execute(instance, useCase)
 
