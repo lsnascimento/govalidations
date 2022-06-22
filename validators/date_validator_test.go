@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/lsnascimento/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/validators/core"
 )
 
 type DateDomain struct {
@@ -138,7 +139,7 @@ func TestDateValidator(t *testing.T) {
 	for name, useCase := range useCases {
 		t.Run(name, func(t *testing.T) {
 			notifier := notifications.New()
-			instance := NewDate(notifier)
+			instance := NewDate(core.NewDate(), notifier)
 
 			useCase.execute(instance, useCase)
 
