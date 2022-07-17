@@ -7,7 +7,7 @@ func TestNotifier(t *testing.T) {
 		instance := New()
 		expected := true
 
-		instance.AddNotification("property", "message")
+		instance.AddMessage("property", "message")
 
 		actual := instance.Invalid()
 
@@ -31,9 +31,9 @@ func TestNotifier(t *testing.T) {
 		instance := New()
 		expected := 1
 
-		instance.AddNotification("property", "message")
+		instance.AddMessage("property", "message")
 
-		actual := len(instance.GetNotifications())
+		actual := len(instance.GetMessages())
 
 		if expected != actual {
 			t.Errorf("Expected %d, but got %d", expected, actual)

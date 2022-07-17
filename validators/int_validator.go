@@ -16,48 +16,48 @@ func NewInt(notifier *notifications.Notifier) Int {
 
 func (validation *Int) IsRequired(value *int, property, message string) {
 	if value == nil {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
 
 func (validation *Int) IsGreaterThan(value, compare int, property, message string) {
 	if value <= compare {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
 
 func (validation *Int) IsGreaterOrEqualThan(value, compare int, property, message string) {
 	if value < compare {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
 
 func (validation *Int) IsLessThan(value, compare int, property, message string) {
 	if value >= compare {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
 
 func (validation *Int) IsLessOrEqualThan(value, compare int, property, message string) {
 	if value > compare {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
 
 func (validation *Int) AreEquals(value, compare int, property, message string) {
 	if value != compare {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
 
 func (validation *Int) AreNotEquals(value, compare int, property, message string) {
 	if value == compare {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
 
 func (validation *Int) IsBetween(value, from, to int, property, message string) {
 	if value < from || value > to {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }

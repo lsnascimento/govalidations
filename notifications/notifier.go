@@ -1,27 +1,27 @@
 package notifications
 
 type Notifier struct {
-	Notifications Notifications
+	Messages Messages
 }
 
 func New() *Notifier {
 	return &Notifier{
-		Notifications: Notifications{},
+		Messages: Messages{},
 	}
 }
 
-func (notifier *Notifier) GetNotifications() Notifications {
-	return notifier.Notifications
+func (notifier *Notifier) GetMessages() Messages {
+	return notifier.Messages
 }
 
-func (notifier *Notifier) AddNotification(property, message string) {
-	notifier.Notifications = append(notifier.Notifications, Notification{property, message})
+func (notifier *Notifier) AddMessage(property, message string) {
+	notifier.Messages = append(notifier.Messages, Message{property, message})
 }
 
 func (notifier *Notifier) Invalid() bool {
-	return len(notifier.Notifications) > 0
+	return len(notifier.Messages) > 0
 }
 
 func (notifier *Notifier) Valid() bool {
-	return len(notifier.Notifications) == 0
+	return len(notifier.Messages) == 0
 }

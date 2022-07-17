@@ -20,7 +20,7 @@ func (validation *Slice) IsRequired(value interface{}, property, message string)
 	val := toSlice(value)
 
 	if len(val) == 0 {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
 

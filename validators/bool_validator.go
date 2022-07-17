@@ -14,18 +14,18 @@ func NewBool(notifier *notifications.Notifier) Bool {
 
 func (validation *Bool) IsRequired(value *bool, property, message string) {
 	if value == nil {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
 
 func (validation *Bool) IsTrue(value bool, property, message string) {
 	if !value {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
 
 func (validation *Bool) IsFalse(value bool, property, message string) {
 	if value {
-		validation.Notifier.AddNotification(property, message)
+		validation.Notifier.AddMessage(property, message)
 	}
 }
