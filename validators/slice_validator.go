@@ -1,37 +1,24 @@
 package validators
 
 import (
-	"reflect"
-
 	"github.com/lsnascimento/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/validators/core"
 )
 
 type Slice struct {
+	Core     core.SliceValidator
 	Notifier *notifications.Notifier
 }
 
-func NewSlice(notifier *notifications.Notifier) Slice {
+func NewSlice(coreInstance core.SliceValidator, notifier *notifications.Notifier) Slice {
 	return Slice{
+		Core:     coreInstance,
 		Notifier: notifier,
 	}
 }
 
 func (validation *Slice) IsRequired(value interface{}, property, message string) {
-	val := toSlice(value)
-
-	if len(val) == 0 {
+	if validation.Core.IsEmpty(value) {
 		validation.Notifier.AddMessage(property, message)
 	}
-}
-
-func toSlice(value interface{}) (slice []interface{}) {
-	element := reflect.ValueOf(value)
-	elementsOfSlice := reflect.ValueOf(element.Interface())
-	quantityElements := elementsOfSlice.Len()
-
-	for i := 0; i < quantityElements; i++ {
-		slice = append(slice, elementsOfSlice.Index(i).Interface())
-	}
-
-	return
 }

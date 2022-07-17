@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/lsnascimento/govalidations/notifications"
+	"github.com/lsnascimento/govalidations/validators/core"
 )
 
 type SliceDomain struct {
@@ -39,7 +40,7 @@ func TestSliceValidator(t *testing.T) {
 	for name, useCase := range useCases {
 		t.Run(name, func(t *testing.T) {
 			notifier := notifications.New()
-			instance := NewSlice(notifier)
+			instance := NewSlice(core.NewSlice(), notifier)
 
 			useCase.execute(instance, useCase)
 
